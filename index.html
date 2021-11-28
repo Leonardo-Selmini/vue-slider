@@ -27,12 +27,12 @@
     <!-- 00000000 MAIN 00000000 -->
     <main>
       <!-- container carosello -->
-      <div class="container">
+      <div class="container" @mouseover="stopTimer" @mouseleave="startTimer">
         <!-- container sinistra x immagine grande -->
         <div id="big-img-container">
 
           <!-- elemento foto -->
-          <div v-for="(element, index) in elements" class="big-img-item">
+          <div v-for="(element, index) in elements" v-show="display(index)" class="big-img-item">
             <img class="big-img" :src="element.image" :alt="element.title">
             <div class="text-container">
               <h2>{{element.title}}</h2>
@@ -44,29 +44,12 @@
         <!-- container a destra con thumbnails -->
         <div id="sm-img-container">
           <!-- icona freccia in su -->
-          <i id="up" class="fas fa-chevron-circle-up"></i>
-          <!-- thumbnail 1 -->
-          <!-- <div class="sm-img-item">
-            <img class="sm-img" src="img/01.jpeg" alt="Venice">
-          </div> -->
-          <!-- thumbnail 2 -->
-          <!-- <div class="sm-img-item">
-            <img class="sm-img" src="img/02.jpeg" alt="Venice">
-          </div> -->
-          <!-- thumbnail 3 -->
-          <!-- <div class="sm-img-item">
-            <img class="sm-img" src="img/03.jpeg" alt="Venice">
-          </div> -->
-          <!-- thumbnail 4 -->
-          <!-- <div class="sm-img-item">
-            <img class="sm-img" src="img/04.jpeg" alt="Venice">
-          </div> -->
-          <!-- thumbnail 5 -->
-          <!-- <div class="sm-img-item">
-            <img class="sm-img" src="img/05.jpeg" alt="Venice">
-          </div> -->
+          <i id="up" class="fas fa-chevron-circle-up" @click="up"></i>
+          <div class="sm-img-item" v-for="(element, index) in elements" >
+            <img class="sm-img" :class="active(index)" :src="element.image" :alt="element.title" @click="selectedIndex = index">
+          </div>
           <!-- icona freccia in giu -->
-          <i id="down" class="fas fa-chevron-circle-down"></i>
+          <i id="down" class="fas fa-chevron-circle-down" @click="down"></i>
         </div>
     </main>
   </div>

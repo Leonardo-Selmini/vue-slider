@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -27,7 +28,6 @@ body{
 
 .big-img-item {
   height: 100%;
-  display: none;
   position: relative;
 }
 
@@ -36,11 +36,6 @@ body{
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-}
-
-.active {
-  display: block;
-  filter: opacity(1) !important;
 }
 
 /* TEXT */
@@ -82,6 +77,10 @@ h2 {
   object-fit: cover;
   border-radius: 10px;
   filter: opacity(.7);
+}
+
+.active {
+  filter: opacity(1);
 }
 
 /* ICONE PULSANTI */
